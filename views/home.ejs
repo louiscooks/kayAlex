@@ -1,0 +1,101 @@
+<% layout('layouts/boilerplate') %>
+
+<div class="row">
+	<section
+		class="about_us col-12 text-center py-5 mb-5"
+		style="background-color: rgba(255, 255, 255, 0.4)"
+	>
+		<div class="container">
+			<h2 class="mb-3">About Us</h2>
+			<p class="m-0 p-0">
+				Welcome to KayAlex, your number one choice in food. <br />
+				We are dedicated to giving you the very best of food, with a focus on
+				quality,service, and speed. When KayAlex first started out, my passion
+				for wanting the best food drove me to research foods from across the
+				world, and gave me the motivation to turn hard work and inspiration into
+				the foods we offer.<br />
+				We hope you enjoy our food as much as we enjoy serving them to you. If
+				you have any questions or comments, please don't hesitate to
+				<a href="#">contact us</a>.<br />Sincerely, KayAlex
+			</p>
+		</div>
+	</section>
+	<section class="col-12 py-5">
+		<div class="container">
+			<div class="row g-0">
+				<div class="col-12 col-lg-6 mb-3">
+					<div
+						id="carouselExampleControls"
+						class="carousel slide"
+						data-bs-ride="carousel"
+					>
+						<div class="carousel-inner">
+							<% for(let img of imgs){ %>
+							<div class="carousel-item <%= imgs[0] === img ? 'active':'' %>">
+								<img
+									src="<%= img %>"
+									class="d-block w-100"
+									style="max-height: 300px; height: 100%"
+									alt="..."
+								/>
+							</div>
+							<% } %>
+						</div>
+					</div>
+				</div>
+				<div class="col-12 col-lg-6 online_order p-2">
+					<div
+						class="
+							d-flex
+							flex-column
+							justify-content-center
+							align-items-center
+							h-100
+						"
+					>
+						<h2 class="text-light">Order Online</h2>
+						<p class="lead text-light text-center">
+							Experience what Kay Alex has to offer.<br />
+							Just click "Get Started" to continue.
+						</p>
+						<a class="btn btn-lg btn-secondary fw-bold text-white" href="/order"
+							>Get Started</a
+						>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section
+		class="hours col-12 text-center py-5 mb-5"
+		style="background-color: rgba(255, 255, 255, 0.4)"
+	>
+		<div class="container">
+			<h2 class="mb-3">Hours Of Operation</h2>
+			<ul style="list-style: none; margin: 0%; padding: 0%">
+				<li class="fs-5 mb-1">
+					Monday-Thursday
+					<span class="fw-bold text-wrap">11:00 am to 9:00 pm</span>
+				</li>
+				<li class="fs-5 mb-1">
+					Friday, Saturday
+					<span class="fw-bold text-wrap">3:00 pm to 11:00 pm</span>
+				</li>
+				<li class="fs-5 mb-1">
+					Sunday <span class="fw-bold text-wrap">Closed</span>
+				</li>
+			</ul>
+		</div>
+	</section>
+	<section
+		class="hours col-12 text-center py-5 mb-5"
+		style="background-color: rgba(159, 21, 177, 0.589)"
+	>
+		<div class="container">
+			<h2 class="mb-5 fs-1 fw-bold">FOLLOW OUR INSTAGRAM</h2>
+			<a class="" href="https://www.instagram.com/officialkayalex/"
+				><i data-feather="instagram" id="icon"></i
+			></a>
+		</div>
+	</section>
+</div>

@@ -1,0 +1,125 @@
+.online_order {
+	background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)),
+		url("https://images.unsplash.com/photo-1471357674240-e1a485acb3e1?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzd8fGZsb3JpZGF8ZW58MHwwfDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60)");
+	background-size: cover;
+	background-position: bottom;
+	text-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, 0.5);
+	box-shadow: inset 0 0 5rem rgba(0, 0, 0, 0.5);
+	height: 300px;
+}
+
+#icon {
+	color: white;
+}
+#icon:hover {
+	color: black;
+}
+
+#nav-link {
+	color: #590bd5;
+	padding-left: 0.3em;
+	padding-right: 0.3em;
+	text-decoration: none;
+}
+#nav-link:hover {
+	color: #370c7c;
+	padding-left: 0.3em;
+	padding-right: 0.3em;
+	text-decoration: underline;
+}
+#nav-link.active {
+	color: #370c7c;
+	padding-left: 0.3em;
+	padding-right: 0.3em;
+	text-decoration: none;
+	font-weight: 600;
+}
+#link {
+	color: white;
+	padding-left: 0.25em;
+	padding-right: 0.25em;
+	text-decoration: none;
+}
+#icon-purple {
+	color: #590bd5;
+}
+#icon-purple:hover {
+	color: #370c7c;
+}
+.cart {
+	background-color: #590bd5;
+}
+.cart:hover {
+	background-color: #370c7c;
+}
+.food_item {
+	color: #590bd5;
+}
+.food_item:hover {
+	color: #370c7c;
+	border: #370c7c solid 1px;
+	cursor: pointer;
+}
+
+.view_cart {
+	z-index: 1;
+	width: 100%;
+}
+
+#menu {
+	height: 100vh;
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	background-color: rgb(255, 255, 255);
+	overflow-x: hidden;
+	padding-top: 60px;
+	border-right: 1px rgba(0, 0, 0, 0.13) solid;
+}
+#menu-item {
+	background-color: #841dc0d7;
+	color: white;
+	text-decoration: none;
+}
+#menu-item:hover {
+	background-color: #6f18a1ad;
+	color: white;
+	text-shadow: 1.25px 1.25px rgba(20, 20, 20, 0.418);
+	text-decoration: none;
+}
+#menu-item.active {
+	background-color: #6f18a1ad;
+	color: white;
+	text-shadow: 1.25px 1.25px rgba(20, 20, 20, 0.418);
+	text-decoration: none;
+}
+.sidenav a {
+	padding: 8px 8px 8px 32px;
+	text-decoration: none;
+	font-size: 25px;
+	color: #590bd5;
+	display: block;
+	transition: 0.3s;
+}
+
+.sidenav a:hover {
+	color: #370c7c;
+}
+
+.sidenav .closebtn {
+	position: absolute;
+	top: 0;
+	right: 25px;
+	font-size: 36px;
+	margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+	.sidenav {
+		padding-top: 15px;
+	}
+	.sidenav a {
+		font-size: 18px;
+	}
+}

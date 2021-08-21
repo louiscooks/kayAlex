@@ -1,0 +1,58 @@
+<% layout('layouts/boilerplate') %>
+<section class="shadow py-5 mb-5 bg-body">
+	<form class="container mb-5">
+		<div class="col-12 col-lg-8 offset-lg-2">
+			<div class="text-center mb-5">
+				<h1 class="mb-3 fs-1">Contact</h1>
+				<p class="lead p-2 fs-5">
+					Got a Question? We would love to hear from you. <br />
+					Send us a message and we will respond as soon as possible.
+				</p>
+			</div>
+			<div class="row g-2 mb-3">
+				<div class="col-12 col-lg-6 mb-3">
+					<label for="name" class="form-label">Name</label>
+					<input
+						type="text"
+						class="form-control"
+						id="name"
+						placeholder="Full name"
+					/>
+				</div>
+				<div class="col-12 col-lg-6 mb-3">
+					<label for="email" class="form-label">Email</label>
+					<input
+						type="email"
+						class="form-control"
+						id="email"
+						placeholder="example@gmail.com"
+					/>
+				</div>
+				<div class="col-12 mb-3">
+					<label for="subject" class="form-label">Subject</label>
+					<input
+						type="text"
+						class="form-control"
+						id="subject"
+						placeholder="Why do you want to email us?"
+					/>
+				</div>
+			</div>
+			<div class="form-floating mb-3">
+				<textarea
+					class="form-control h-100 py-5"
+					placeholder="Leave a message here"
+					id="message"
+					style="height: 100px"
+				></textarea>
+				<label for="message">Message</label>
+			</div>
+			<button
+				class="btn btn-md text-light cart text-center"
+				style="width: 100%"
+			>
+				Send Message
+			</button>
+		</div>
+	</form>
+</section>

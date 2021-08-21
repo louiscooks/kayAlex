@@ -1,0 +1,45 @@
+<nav
+	class="navbar navbar-expand-lg navbar-light bg-light
+		shadow-sm
+		p-3
+		mb-0
+		bg-body mb-5
+		"
+>
+
+	<div class="container-fluid">
+		<a class="navbar-brand " href="#">KayAlex</a>
+		<div class="justify-content-center">
+		<div class="d-lg-block  d-none" id="navbarNav">
+					<a class="nav-item  <%= url === "/" ? 'active':'' %>" id="nav-link" aria-current="page" href="/">Home</a>
+					<a class="nav-item  <%= url === "/order" ? 'active':'' %>" id="nav-link" href="/order">Order Online</a>
+					<a class="nav-item  <%= url === "/contact" ? 'active':'' %>" id="nav-link" href="/contact">Contact</a>
+					
+		</div>
+		</div>
+		<div class="justify-content-end" >
+			<div class="d-lg-block  d-none" id="navbarNav">
+					<a class="nav-item  d-inline <%= url === "/login" ? 'active':'' %>" id="nav-link" href="/login">Login</a>
+					<a class="nav-item  d-inline <%= url === "/register" ? 'active':'' %>" id="nav-link" href="/register">Create Account</a>
+					</div>
+					<div class="d-lg-none d-block">
+			<a class="menu-toggler" href="#"><i data-feather="menu" id="icon-purple"></i></a>
+		</div>
+			</div>
+	</div>
+	
+</nav>
+
+<section id="menu" class="col-4 p-0 py-4 d-lg-none" style="display:none">
+	<div class="container">
+		<a style="color: black;" class="float-end me-3 menu-toggler" href="#"><i data-feather="x-circle" style="font-size: 12px;" ></i></a>
+	<h5 class="fs-5 mb-3 text-dark">Kay Alex</h5>
+	<div class="row row-cols-1 gy-1" >
+<a href="/" class="menu-link col py-2 <%= url === "/" ? 'active':'' %>" id="menu-item">Home</a>
+<a href="/order" class="menu-link  col py-2 <%= url === "/order" ? 'active':'' %>"  id="menu-item">Order Online</a>
+<a href="/contact" class="menu-link col py-2 <%= url === "/contact" ? 'active':'' %>"  id="menu-item">Contact</a>
+<a href="/login" class="menu-link col py-2 <%= url === "/login" ? 'active':'' %>"  id="menu-item">Login</a>
+<a href="/register" class="menu-link col py-2 <%= url === "/register" ? 'active':'' %>"  id="menu-item">Create Account</a>
+	</div>
+	</div>
+</section>
