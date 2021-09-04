@@ -11,23 +11,13 @@
 						><i data-feather="instagram" id="icon-purple"></i
 					></a>
 				</h2>
-				<p class="mb-0">
-					<%= times && times.arr.length ? `Open ${times.storeHours.openTime} -
-					${times.storeHours.closeTime}`:'Closed' %>
-				</p>
+				<p class="mb-0" id="appendTimeBanner"></p>
 			</div>
 		</section>
 		<section class="shadow-sm py-1 mb-5 bg-body">
 			<p class="text-center fs-5 p-0 m-0">
-				<span class="fw-bold">Pick Up</span> for <select name=""  id=q""> 
-					
-					<%if(times && times.arr.length){ %> <% for(let time of times.arr){ %>
-				<option value="<%= time %>"><%= time %></option>
-				<% } } else{%>
-				<option value="null">No times available</option>
-				<% } %>
-				
-                </select>
+				<span class="fw-bold">Pick Up</span> for
+				<select name="" id="appendTimes"></select>
 			</p>
 		</section>
 		<section>
@@ -72,29 +62,36 @@
 									></button>
 								</div>
 								<div class="modal-body">1</div>
-								<div class="modal-footer justify-content-start flex-column p-2 flex-wrap" style="width: 100%;">
-									<div class="" style="width: 100%;">
-                                        <span class="d-inline px-3">
-										<button class="minus bg-body" style="border:none;">
-											<i data-feather="minus" id="icon-purple"></i></button>
-                                            <span class="qty p-2 border">1</span>
-                                            <button class="plus bg-body" style="border:none;">
-											<i data-feather="plus" id="icon-purple"></i>
+								<div
+									class="
+										modal-footer
+										justify-content-start
+										flex-column
+										p-2
+										flex-wrap
+									"
+									style="width: 100%"
+								>
+									<div class="" style="width: 100%">
+										<span class="d-inline px-3">
+											<button class="minus bg-body" style="border: none">
+												<i data-feather="minus" id="icon-purple"></i>
+											</button>
+											<span class="qty p-2 border">1</span>
+											<button class="plus bg-body" style="border: none">
+												<i data-feather="plus" id="icon-purple"></i>
+											</button>
+										</span>
+										<button
+											class="btn btn-primary cart text-start ps-3 border-0"
+											style="width: calc(100% - 150px)"
+										>
+											<span class="pe-1"
+												><i data-feather="shopping-cart"></i
+											></span>
+											Add to cart <span class="float-end pe-2">$0.00</span>
 										</button>
-									</span>
-                                        <button
-						class="
-							btn btn-primary
-							cart
-							text-start
-							ps-3
-							border-0
-						"
-                        style="width: calc(100% - 150px)"
-					>
-						<span class="pe-1"><i data-feather="shopping-cart"></i></span>
-						Add to cart <span class="float-end pe-2">$0.00</span>
-					</button></div>
+									</div>
 								</div>
 							</div>
 						</div>

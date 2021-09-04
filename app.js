@@ -20,7 +20,8 @@ const app = express();
 const orderRoutes = require("./router/orders");
 const contactRoutes = require("./router/contact");
 const usersRoutes = require("./router/users");
-app.use(express.urlencoded({ extended: true }));
+// app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use(helmet.helmet());
