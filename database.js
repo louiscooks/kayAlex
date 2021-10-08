@@ -1,11 +1,12 @@
-const mysql = require("mysql");
+const mongoose = require("mongoose");
+const dbUrl = process.env.xz || "mongodb://localhost:27017/kayalex";
 
-const connection = mysql.createConnection({
-	host: process.env.DB_HOST,
-	user:process.env.DB_USER,
-	password:process.env.DB_PASS ,
-	database: process.env.DB
+mongoose.connect(dbUrl);
+
+const db = mongoose.connection;
+db.on("error", console.error.bind(console, "connection error:"));
+db.once("open", () => {
+	console.log("Database connected");
 });
 
-
-module.exports = connection
+module.exports = { dbUrl };

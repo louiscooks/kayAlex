@@ -1,0 +1,32 @@
+#menu {
+	height: 100vh;
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	background-color: rgb(255, 255, 255);
+	overflow-x: hidden;
+	padding-top: 60px;
+	border-right: 1px rgba(0, 0, 0, 0.13) solid;
+}
+
+.sidenav a {
+	padding: 8px 8px 8px 32px;
+	text-decoration: none;
+	font-size: 25px;
+	color: #590bd5;
+	display: block;
+	transition: 0.3s;
+}
+
+.sidenav a:hover {
+	color: #370c7c;
+}
+
+.sidenav .closebtn {
+	position: absolute;
+	top: 0;
+	right: 25px;
+	font-size: 36px;
+	margin-left: 50px;
+}

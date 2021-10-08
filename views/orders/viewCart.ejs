@@ -1,0 +1,156 @@
+<%layout('layouts/orderboilerplate') %>
+
+<div class="col-lg-6 col-12 offset-lg-3">
+	<div
+		class="card shadow-sm py-1 mb-3 mt-3 bg-body border-0"
+		style="height: calc(100vh - 60px)"
+	>
+		<div class="card-body d-flex flex-column">
+			<h5 class="card-title mb-2 fs-2">Your Cart</h5>
+			<% if(cart.cartItems.length){ for(let cartProduct of cart.cartItems){ %>
+			<div class="card border-0 d-inline">
+				<div class="card-body p-2">
+					<div class="row row-cols-12 g-3" style="width: 100%">
+						<div class="col-auto fw-bold"><%= cartProduct.qty %></div>
+						<div class="col fw-bold"><%= cartProduct.name%></div>
+						<div class="col-auto text-end">
+							$<%= cartProduct.price.toFixed(2)%>
+						</div>
+
+						<div class="row row-cols-auto">
+							<div class="col p-0 m-0">
+								<button
+									type="button"
+									class="px-2 bg-body border-0 clickable-link"
+									data-bs-toggle="modal"
+									data-bs-target="#edit<%=cartProduct._id%>modal"
+								>
+									Edit
+								</button>
+							</div>
+							<form
+								action="/order/<%=cartProduct._id%>/action?_method=DELETE"
+								method="POST"
+								class="col p-0 m-0"
+							>
+								<button
+									class="border-0 px-2 bg-body clickable-link"
+									name="returnPage"
+									value="/order/view-cart"
+								>
+									Remove
+								</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<% } } else{%>
+			<div
+				class="
+					h-100
+					d-flex
+					flex-column
+					justify-content-center
+					align-items-center
+				"
+			>
+				<p class="card-text my-5">
+					<a href="/order">Add items to get started </a>
+				</p>
+			</div>
+
+			<% } %>
+
+			<div class="mt-auto mb-3">
+				<ul class="m-0 px-2" style="list-style: none">
+					<li>
+						subtotal
+						<span class="float-end">$<%= cart.subtotal.toFixed(2) %></span>
+					</li>
+					<li>
+						tax <span class="float-end">$<%= cart.tax.toFixed(2) %></span>
+					</li>
+				</ul>
+			</div>
+			<button
+				class="btn btn-primary align-content-end cart text-start ps-3 border-0"
+			>
+				<span class="pe-1"><i data-feather="shopping-cart"></i></span>
+				Checkout (<%= cart.totalQty %>)
+				<span class="float-end pe-3">$<%= cart.total.toFixed(2) %></span>
+			</button>
+		</div>
+	</div>
+</div>
+<% if(cart.cartItems.length){ for(let cartProduct of cart.cartItems){ %>
+
+<div
+	class="modal fade"
+	id="edit<%=cartProduct._id%>modal"
+	tabindex="-1"
+	aria-labelledby="edit<%=cartProduct._id%>modalLabel"
+	aria-hidden="true"
+>
+	<div class="modal-dialog-centered modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="edit<%=cartProduct._id%>modalLabel">
+					Edit <%= cartProduct.name %>
+				</h5>
+				<button
+					type="button"
+					class="btn-close"
+					data-bs-dismiss="modal"
+					aria-label="Close"
+				></button>
+			</div>
+			<div class="modal-body"><%= cartProduct.description %></div>
+			<div
+				class="modal-footer justify-content-start flex-column p-2 flex-wrap"
+				style="width: 100%"
+			>
+				<form
+					class="row row-cols-12 w-100"
+					action="/order/<%= cartProduct._id %>/action?_method=PATCH"
+					method="POST"
+				>
+					<div class="col-auto">
+						<button class="cartMinus bg-body" style="border: none">
+							<i data-feather="minus" id="icon-purple"></i>
+						</button>
+						<input
+							type="number"
+							class="cartQty p-2 border"
+							maxlength="2"
+							name="qty"
+							min="1"
+							value="<%=cartProduct.qty%>"
+							readonly
+						/>
+						<button class="cartPlus bg-body" style="border: none">
+							<i data-feather="plus" id="icon-purple"></i>
+						</button>
+					</div>
+					<div class="col">
+						<button
+							class="btn btn-primary cart text-start ps-3 border-0"
+							style="width: 100%"
+							name="returnPage"
+							value="/order/view-cart"
+						>
+							<span class="pe-1"><i data-feather="shopping-cart"></i></span>
+							Add to cart
+							<span class="float-end pe-2" id="dynamicPrice                    "
+								>$<%= cartProduct.price.toFixed(2) %></span
+							>
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<%}}%>

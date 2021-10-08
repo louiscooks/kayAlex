@@ -1,6 +1,6 @@
 <% layout('layouts/orderboilerplate') %>
-<div class="row g-0 mb-3">
-	<div class="col-12 col-lg-9">
+<div class="row g-0 mb-5">
+	<div class="col-12 col-lg-8">
 		<section class="shadow-sm py-3 mb-3 bg-body">
 			<div class="container px-2 px-lg-5">
 				<h2>
@@ -15,7 +15,7 @@
 			</div>
 		</section>
 		<section class="shadow-sm py-1 mb-5 bg-body">
-			<p class="text-center fs-5 p-0 m-0">
+			<p class="text-center fs-5 p-0 m-0 mb-2">
 				<span class="fw-bold">Pick Up</span> for
 				<select name="" id="appendTimes"></select>
 			</p>
@@ -23,191 +23,117 @@
 		<section>
 			<div class="container px-2 px-lg-5">
 				<h3>Featured</h3>
-				<div class="row row-cols-2 g-3">
-					<div class="col-12 col-lg-4">
+				<div class="row row-cols-3 g-2" id="productsList">
+					<% if(products){ for(let product of products){%>
+					<div class="col-12 col-xl-4">
 						<div
 							class="card food_item shadow-sm py-1"
 							data-bs-toggle="modal"
-							data-bs-target="#item1model"
+							data-bs-target="#product<%= product._id %>model"
 						>
 							<div class="card-body">
-								<h5 class="card-title">food name</h5>
-								<p class="card-text text-muted fw-lighter mb-1">
-									Lorem ipsum dolor sit amet consectetur adipisicing elit.
-									Libero mollitia consequuntur dolorum hic at itaque eius. Quo
-									reiciendis nisi sint maxime quae nobis, reprehenderit beatae
-									veniam, omnis excepturi quos consequatur.
-								</p>
-								<p class="text-dark mb-0">food price</p>
+								<h5 class="card-title"><%= product.name %></h5>
+								<p class="text-dark mb-0">$<%= product.price.toFixed(2) %></p>
 							</div>
 						</div>
-					</div>
-					<!-- Modal -->
-					<div
-						class="modal fade"
-						id="item1model"
-						tabindex="-1"
-						aria-labelledby="item1modelLabel"
-						aria-hidden="true"
-					>
-						<div class="modal-dialog-centered modal-dialog">
-							<div class="modal-content">
-								<div class="modal-header">
-									<h5 class="modal-title" id="item1modelLabel">Modal title</h5>
-									<button
-										type="button"
-										class="btn-close"
-										data-bs-dismiss="modal"
-										aria-label="Close"
-									></button>
-								</div>
-								<div class="modal-body">1</div>
-								<div
-									class="
-										modal-footer
-										justify-content-start
-										flex-column
-										p-2
-										flex-wrap
-									"
-									style="width: 100%"
-								>
-									<div class="" style="width: 100%">
-										<span class="d-inline px-3">
-											<button class="minus bg-body" style="border: none">
-												<i data-feather="minus" id="icon-purple"></i>
-											</button>
-											<span class="qty p-2 border">1</span>
-											<button class="plus bg-body" style="border: none">
-												<i data-feather="plus" id="icon-purple"></i>
-											</button>
-										</span>
-										<button
-											class="btn btn-primary cart text-start ps-3 border-0"
-											style="width: calc(100% - 150px)"
+						<div
+							class="modal fade"
+							id="product<%= product._id %>model"
+							tabindex="-1"
+							aria-labelledby="product<%= product._id %>modelLabel"
+							aria-hidden="true"
+						>
+							<div class="modal-dialog-centered modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5
+											class="modal-title"
+											id="product<%= product._id %>modelLabel"
 										>
-											<span class="pe-1"
-												><i data-feather="shopping-cart"></i
-											></span>
-											Add to cart <span class="float-end pe-2">$0.00</span>
-										</button>
+											<%= product.name %>
+										</h5>
+										<button
+											type="button"
+											class="btn-close"
+											data-bs-dismiss="modal"
+											aria-label="Close"
+										></button>
+									</div>
+									<div class="modal-body"><%= product.description %></div>
+									<div
+										class="
+											modal-footer
+											justify-content-start
+											flex-column
+											p-2
+											flex-wrap
+										"
+										style="width: 100%"
+									>
+										<form
+											class="row row-cols-12 w-100"
+											action="/order/add-to-cart/<%= product._id %>"
+											method="POST"
+											+
+										>
+											<div
+												class="
+													col-sm-auto
+													text-center text-sm-start
+													mb-2 mb-sm-0
+												"
+											>
+												<button class="minus bg-body" style="border: none">
+													<i data-feather="minus" id="icon-purple"></i>
+												</button>
+												<input
+													type="number"
+													class="qty p-2 border"
+													maxlength="2"
+													name="qty"
+													min="1"
+													value="1"
+													readonly
+												/>
+												<button class="plus bg-body" style="border: none">
+													<i data-feather="plus" id="icon-purple"></i>
+												</button>
+											</div>
+											<div class="col">
+												<button
+													class="
+														btn btn-primary
+														cart
+														text-start
+														ps-3
+														border-0
+														w-100
+													"
+												>
+													<span class=""
+														><i data-feather="shopping-cart"></i
+													></span>
+													Add to cart
+													<span
+														class="float-end pe-2"
+														id="dynamicPrice                    "
+														>$<%= product.price.toFixed(2) %></span
+													>
+												</button>
+											</div>
+										</form>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-					<div class="col-12 col-lg-4">
-						<div
-							class="card food_item shadow-sm py-1"
-							data-bs-toggle="modal"
-							data-bs-target="#item2model"
-						>
-							<div class="card-body">
-								<h5 class="card-title">food name</h5>
-								<p class="card-text text-muted">
-									Lorem ipsum dolor sit amet consectetur adipisicing elit.
-									Libero mollitia consequuntur dolorum hic at itaque eius. Quo
-									reiciendis nisi sint maxime quae nobis, reprehenderit beatae
-									veniam, omnis excepturi quos consequatur.
-								</p>
-								<p class="text-dark mb-0">food price</p>
-							</div>
-						</div>
-					</div>
-					<!-- Modal -->
-					<div
-						class="modal fade"
-						id="item2model"
-						tabindex="-1"
-						aria-labelledby="item2modelLabel"
-						aria-hidden="true"
-					>
-						<div class="modal-dialog-centered modal-dialog">
-							<div class="modal-content">
-								<div class="modal-header">
-									<h5 class="modal-title" id="item2modelLabel">Modal title</h5>
-									<button
-										type="button"
-										class="btn-close"
-										data-bs-dismiss="modal"
-										aria-label="Close"
-									></button>
-								</div>
-								<div class="modal-body">2</div>
-								<div class="modal-footer">
-									<button
-										type="button"
-										class="btn btn-secondary"
-										data-bs-dismiss="modal"
-									>
-										Close
-									</button>
-									<button type="button" class="btn btn-primary">
-										Save changes
-									</button>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-12 col-lg-4">
-						<div
-							class="card food_item shadow-sm py-1"
-							data-bs-toggle="modal"
-							data-bs-target="#item3model"
-						>
-							<div class="card-body">
-								<h5 class="card-title">food name</h5>
-								<p class="card-text text-muted">
-									Lorem ipsum dolor sit amet consectetur adipisicing elit.
-									Libero mollitia consequuntur dolorum hic at itaque eius. Quo
-									reiciendis nisi sint maxime quae nobis, reprehenderit beatae
-									veniam, omnis excepturi quos consequatur.
-								</p>
-								<p class="text-dark mb-0">food price</p>
-							</div>
-						</div>
-					</div>
-					<!-- Modal -->
-					<div
-						class="modal fade"
-						id="item3model"
-						tabindex="-1"
-						aria-labelledby="item3modelLabel"
-						aria-hidden="true"
-					>
-						<div class="modal-dialog-centered modal-dialog">
-							<div class="modal-content">
-								<div class="modal-header">
-									<h5 class="modal-title" id="item3modelLabel">Modal title</h5>
-									<button
-										type="button"
-										class="btn-close"
-										data-bs-dismiss="modal"
-										aria-label="Close"
-									></button>
-								</div>
-								<div class="modal-body">3</div>
-								<div class="modal-footer">
-									<button
-										type="button"
-										class="btn btn-secondary"
-										data-bs-dismiss="modal"
-									>
-										Close
-									</button>
-									<button type="button" class="btn btn-primary">
-										Save changes
-									</button>
-								</div>
-							</div>
-						</div>
-					</div>
+					<% }} %>
 				</div>
 			</div>
 		</section>
 	</div>
 	<section
-		class="w-25 d-none d-lg-block position-fixed end-0 shadow-sm bg-body"
+		class="col-4 d-none d-lg-block position-fixed end-0 shadow-sm bg-body"
 	>
 		<div class="container">
 			<div
@@ -215,7 +141,48 @@
 				style="height: calc(100vh - 60px)"
 			>
 				<div class="card-body d-flex flex-column">
-					<h5 class="card-title">Your Order</h5>
+					<h5 class="card-title mb-2">Your Order</h5>
+					<% if(cart.cartItems.length){ for(let cartProduct of cart.cartItems){
+					%>
+					<div class="card border-0 d-inline">
+						<div class="card-body p-2">
+							<div class="row row-cols-12 g-3" style="width: 100%">
+								<div class="col-auto fw-bold"><%= cartProduct.qty %></div>
+								<div class="col fw-bold"><%= cartProduct.name%></div>
+								<div class="col-auto text-end">
+									$<%= cartProduct.price.toFixed(2)%>
+								</div>
+
+								<div class="row row-cols-auto">
+									<div class="col p-0 m-0">
+										<button
+											type="button"
+											class="px-2 bg-body border-0 clickable-link"
+											data-bs-toggle="modal"
+											data-bs-target="#edit<%=cartProduct._id%>modal"
+										>
+											Edit
+										</button>
+									</div>
+									<form
+										action="/order/<%=cartProduct._id%>/action?_method=DELETE"
+										method="POST"
+										class="col p-0 m-0"
+									>
+										<button
+											class="border-0 px-2 bg-body clickable-link"
+											name="returnPage"
+											value="/order"
+										>
+											Remove
+										</button>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<% } } else{%>
 					<div
 						class="
 							h-100
@@ -227,10 +194,18 @@
 					>
 						<p class="card-text my-5">Add items to get started</p>
 					</div>
+
+					<% } %>
+
 					<div class="mt-auto mb-3">
 						<ul class="m-0 px-2" style="list-style: none">
-							<li>subtotal <span class="float-end">$0.00</span></li>
-							<li>tax <span class="float-end">$0.00</span></li>
+							<li>
+								subtotal
+								<span class="float-end">$<%= cart.subtotal.toFixed(2) %></span>
+							</li>
+							<li>
+								tax <span class="float-end">$<%= cart.tax.toFixed(2) %></span>
+							</li>
 						</ul>
 					</div>
 					<button
@@ -244,10 +219,81 @@
 						"
 					>
 						<span class="pe-1"><i data-feather="shopping-cart"></i></span>
-						Checkout (0) <span class="float-end pe-3">$0.00</span>
+						Checkout (<%= cart.totalQty %>)
+						<span class="float-end pe-3">$<%= cart.total.toFixed(2) %></span>
 					</button>
 				</div>
 			</div>
 		</div>
 	</section>
 </div>
+<% if(cart.cartItems.length){ for(let cartProduct of cart.cartItems){ %>
+
+<div
+	class="modal fade"
+	id="edit<%=cartProduct._id%>modal"
+	tabindex="-1"
+	aria-labelledby="edit<%=cartProduct._id%>modalLabel"
+	aria-hidden="true"
+>
+	<div class="modal-dialog-centered modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="edit<%=cartProduct._id%>modalLabel">
+					Edit <%= cartProduct.name %>
+				</h5>
+				<button
+					type="button"
+					class="btn-close"
+					data-bs-dismiss="modal"
+					aria-label="Close"
+				></button>
+			</div>
+			<div class="modal-body"><%= cartProduct.description %></div>
+			<div
+				class="modal-footer justify-content-start flex-column p-2 flex-wrap"
+				style="width: 100%"
+			>
+				<form
+					class="row row-cols-12 w-100"
+					action="/order/<%= cartProduct._id %>/action?_method=PATCH"
+					method="POST"
+				>
+					<div class="col-auto">
+						<button class="cartMinus bg-body" style="border: none">
+							<i data-feather="minus" id="icon-purple"></i>
+						</button>
+						<input
+							type="number"
+							class="cartQty p-2 border"
+							maxlength="2"
+							name="qty"
+							min="1"
+							value="<%=cartProduct.qty%>"
+							readonly
+						/>
+						<button class="cartPlus bg-body" style="border: none">
+							<i data-feather="plus" id="icon-purple"></i>
+						</button>
+					</div>
+					<div class="col">
+						<button
+							class="btn btn-primary cart text-start ps-3 border-0"
+							style="width: 100%"
+							name="returnPage"
+							value="/order"
+						>
+							<span class="pe-1"><i data-feather="shopping-cart"></i></span>
+							Add to cart
+							<span class="float-end pe-2" id="dynamicPrice                    "
+								>$<%= cartProduct.price.toFixed(2) %></span
+							>
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<%}}%>

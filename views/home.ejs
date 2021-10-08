@@ -1,20 +1,28 @@
 <% layout('layouts/boilerplate') %>
 
-<div class="row">
-	<section
-		class="col-12 text-center py-5 mb-5"
-		style="background-color: rgba(178, 35, 221, 0.685)"
-	>
-		<div class="container">
-			<h2 class="mb-3">IMPORTANT MESSAGE</h2>
-			<p class="m-0 p-0 fs-5">
-				This website is currently under development. Feel free to traverse the
-				different pages and see what's to come. Thank you!
-			</p>
+<div class="row g-0">
+	<section class="col-12 mb-0">
+		<div
+			id="carouselExampleControls"
+			class="carousel slide"
+			data-bs-ride="carousel"
+		>
+			<div class="carousel-inner">
+				<% for(let img of imgs){ %>
+				<div class="carousel-item <%= imgs[0] === img ? 'active':'' %>">
+					<img
+						src="<%= img %>"
+						class="d-block w-100"
+						style="max-height: 600px; height: 100%"
+						alt="..."
+					/>
+				</div>
+				<% } %>
+			</div>
 		</div>
 	</section>
 	<section
-		class="about_us col-12 text-center py-5 mb-5"
+		class="about_us col-12 text-center p-3"
 		style="background-color: rgba(255, 255, 255, 0.4)"
 	>
 		<div class="container">
@@ -32,59 +40,45 @@
 			</p>
 		</div>
 	</section>
-	<section class="col-12 py-5">
-		<div class="container">
-			<div class="row g-0">
-				<div class="col-12 col-lg-6 mb-3">
-					<div
-						id="carouselExampleControls"
-						class="carousel slide"
-						data-bs-ride="carousel"
-					>
-						<div class="carousel-inner">
-							<% for(let img of imgs){ %>
-							<div class="carousel-item <%= imgs[0] === img ? 'active':'' %>">
-								<img
-									src="<%= img %>"
-									class="d-block w-100"
-									style="max-height: 300px; height: 100%"
-									alt="..."
-								/>
-							</div>
-							<% } %>
-						</div>
-					</div>
-				</div>
-				<div class="col-12 col-lg-6 online_order p-2">
-					<div
-						class="
-							d-flex
-							flex-column
-							justify-content-center
-							align-items-center
-							h-100
-						"
-					>
-						<h2 class="text-light">Order Online</h2>
-						<p class="lead text-light text-center">
-							Experience what Kay Alex has to offer.<br />
-							Just click "Get Started" to continue.
-						</p>
-						<a class="btn btn-lg btn-secondary fw-bold text-white" href="/order"
-							>Get Started</a
-						>
-					</div>
-				</div>
+	<section class="col-12 col-md-6 py-0">
+		<div class="online_order p-2">
+			<div
+				class="
+					d-flex
+					flex-column
+					justify-content-center
+					align-items-center
+					h-100
+				"
+			>
+				<h2 class="text-light">Order Online</h2>
+				<p class="lead text-light text-center">
+					Experience what Kay Alex has to offer.<br />
+					Just click "Get Started" to continue.
+				</p>
+				<a class="btn btn-lg btn-secondary fw-bold text-white" href="/order"
+					>Get Started</a
+				>
 			</div>
 		</div>
 	</section>
 	<section
-		class="hours col-12 text-center py-5 mb-5"
+		class="hours col-12 col-md-6 text-center"
 		style="background-color: rgba(255, 255, 255, 0.4)"
 	>
-		<div class="container">
+		<div
+			class="
+				container
+				d-flex
+				flex-column
+				justify-content-center
+				align-items-center
+				p-3
+			"
+			style="height: 100%"
+		>
 			<h2 class="mb-3">Hours Of Operation</h2>
-			<ul style="list-style: none; margin: 0%; padding: 0%">
+			<ul class="" style="list-style: none; margin: 0%; padding: 0%">
 				<li class="fs-5 mb-1">
 					Monday-Thursday
 					<span class="fw-bold text-wrap">11:00 am to 9:00 pm</span>
@@ -100,11 +94,11 @@
 		</div>
 	</section>
 	<section
-		class="hours col-12 text-center py-5 mb-5"
+		class="hours col-12 text-center py-3 mb-3"
 		style="background-color: rgba(178, 35, 221, 0.685)"
 	>
 		<div class="container">
-			<h2 class="mb-5 fs-1 fw-bold">FOLLOW OUR INSTAGRAM</h2>
+			<h2 class="mb-3 fs-3 fw-bold">FOLLOW OUR INSTAGRAM</h2>
 			<a class="" href="https://www.instagram.com/officialkayalex/"
 				><i data-feather="instagram" id="icon"></i
 			></a>

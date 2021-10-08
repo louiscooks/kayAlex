@@ -2,8 +2,7 @@
 	class="navbar navbar-expand-lg navbar-light bg-light
 		shadow-sm
 		p-3
-		mb-0
-		bg-body mb-5
+		bg-body mb-0
 		"
 >
 
@@ -30,16 +29,16 @@
 	
 </nav>
 
-<section id="menu" class="col-6 p-0 py-4 d-lg-none" style="display:none">
+<section id="menu" class="col-9 col-sm-4 p-0 py-4 d-lg-none" style="display:none">
 	<div class="container">
-		<a style="color: black;" class="float-end me-3 menu-toggler" href="#"><i data-feather="x-circle" style="font-size: 12px;" ></i></a>
+		<a style="color: black;" class="float-end me-3 menu-toggler" href="#"><i data-feather="x" style="font-size: 12px;" ></i></a>
 	<h5 class="fs-5 mb-3 text-dark">Kay Alex</h5>
-	<div class="row row-cols-1 gy-1" >
-<a href="/" class="menu-link col py-2 <%= url === "/" ? 'active':'' %>" id="menu-item">Home</a>
-<a href="/order" class="menu-link  col py-2 <%= url === "/order" ? 'active':'' %>"  id="menu-item">Order Online</a>
-<a href="/contact" class="menu-link col py-2 <%= url === "/contact" ? 'active':'' %>"  id="menu-item">Contact</a>
-<a href="/login" class="menu-link col py-2 <%= url === "/login" ? 'active':'' %>"  id="menu-item">Login</a>
-<a href="/register" class="menu-link col py-2 <%= url === "/register" ? 'active':'' %>"  id="menu-item">Create Account</a>
+	<div class="row row-cols-1 gy-1 text-sm-center" >
+<a href="/" class=" col py-2 <%= url === "/" ? 'active':'' %>" id="nav-link">Home</a>
+<a href="/order" class="  col py-2 <%= url === "/order" ? 'active':'' %>"  id="nav-link">Order Online</a>
+<a href="/contact" class=" col py-2 <%= url === "/contact" ? 'active':'' %>"  id="nav-link">Contact</a>
+<a href="/login" class=" col py-2 <%= url === "/login" ? 'active':'' %>"  id="nav-link">Login</a>
+<a href="/register" class=" col py-2 <%= url === "/register" ? 'active':'' %>"  id="nav-link">Create Account</a>
 	</div>
 	</div>
 </section>

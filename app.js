@@ -4,34 +4,30 @@ if (process.env.NODE_ENV !== "production") {
 const express = require("express");
 const path = require("path");
 const ejsMate = require("ejs-mate");
-const session = require("./session");
+const { session, sessionConfig } = require("./session");
 const helmet = require("./helmet");
 const ExpressError = require("./utils/ExpressError");
-const connection = require("./database");
-connection.connect((err) => {
-	if (err) {
-		console.log("error connecting: " + err.stack);
-		return;
-	}
-	console.log("connnected as id " + connection.threadId);
-});
+const methodOverride = require("method-override");
 
 const app = express();
 const orderRoutes = require("./router/orders");
 const contactRoutes = require("./router/contact");
 const usersRoutes = require("./router/users");
-// app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+const productRoutes = require("./router/products");
+
+app.use(express.urlencoded({ extended: true }));
+// app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use(helmet.helmet());
-app.use(helmet.contentSecurity);
-app.use(session);
+// app.use(helmet.helmet());
+// app.use(helmet.contentSecurity);
+app.use(session(sessionConfig));
 
 app.engine("ejs", ejsMate);
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
+app.use(methodOverride("_method"));
 app.use((req, res, next) => {
 	res.locals.currentUser = req.user;
 	res.locals.url = req.originalUrl;
@@ -54,7 +50,7 @@ app.use("/order", orderRoutes);
 //contact
 app.use("/contact", contactRoutes);
 //users
-app.use("/", usersRoutes);
+app.use("/api/products", productRoutes);
 
 //error handling middleware
 app.all("*", (req, res, next) => {
